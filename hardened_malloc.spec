@@ -9,7 +9,7 @@ Source0:        %{url}/archive/refs/tags/%{version}.tar.gz
 Source1:        opt.patch
 BuildRequires:  systemd-rpm-macros rpm-build rpmdevtools make gcc gcc-c++
 ExclusiveArch: x86_64 aarch64
-
+test
 %global debug_package %{nil}
 
 # https://github.com/GrapheneOS/hardened_malloc/issues/200
