@@ -1,20 +1,19 @@
 Name:           hardened_malloc
-Version:        13
+Version:        2025122500
 Release:        1%{?dist}
 Summary:        Hardened allocator designed for modern systems
 
 License:        MIT
 URL:            https://github.com/GrapheneOS/hardened_malloc
-Source0:        %{url}/archive/refs/tags/%{version}.tar.gz
-Source1:        opt.patch
-BuildRequires:  systemd-rpm-macros rpm-build rpmdevtools make gcc gcc-c++
+Source0:        opt.patch
+BuildRequires:  systemd-rpm-macros rpm-build rpmdevtools make gcc gcc-c++ git-core
 ExclusiveArch: x86_64 aarch64
 
 %global debug_package %{nil}
 
 # https://github.com/GrapheneOS/hardened_malloc/issues/200
 # https://github.com/GrapheneOS/hardened_malloc/pull/253
-%global optflags %{optflags} -fno-fat-lto-objects -Wno-error=unterminated-string-initialization
+%global optflags %{optflags} -fno-fat-lto-objects
 
 %if 0%{?fedora} == 40
 %undefine _ld_pack_relocs
@@ -54,10 +53,9 @@ will gain more portability / integration over time.
 
 %prep
 
-%define _srcdir hardened_malloc
+git clone --single-branch --branch=%{version} https://github.com/GrapheneOS/hardened_malloc.git
 
-%{__mkdir} %{_srcdir};
-%{__tar} -x -f %{SOURCE0} -C %{_srcdir} --strip-components 1;
+%define _srcdir hardened_malloc
 
 %build
 
@@ -66,7 +64,7 @@ cd %{_srcdir};
 cp config/default.mk config/pkey.mk
 sed -i 's/CONFIG_SEAL_METADATA := false/CONFIG_SEAL_METADATA := true/' config/pkey.mk
 
-patch -p1 < %{SOURCE1};
+patch -p1 < %{SOURCE0};
 
 
 make CONFIG_NATIVE=false VARIANT=default;
@@ -156,6 +154,9 @@ make test
 %endif
 
 %changelog
+* Fri Jan 2 2026 N0L0L1N0L1F3 - 2025122500-1
+- Use GrapheneOS release tags instead of branches
+
 * Tue Dec 12 2023 rusty-snake - 12-5
 - hardened_malloc.so: 4755 -> 4644
 
