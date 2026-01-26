@@ -14,6 +14,9 @@ ExclusiveArch: x86_64 aarch64
 
 %global debug_package %{nil}
 
+# https://github.com/GrapheneOS/hardened_malloc/issues/200
+%global optflags %{optflags} -fno-fat-lto-objects
+
 %description
 Hardened allocator designed for modern systems.
 
