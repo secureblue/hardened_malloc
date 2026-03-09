@@ -1,7 +1,7 @@
-%global tag 2026012100
+%global tag 2026030700
 
 Name:           hardened_malloc
-Version:        13
+Version:        14
 Release:        %{tag}%{?dist}
 Summary:        Hardened allocator designed for modern systems
 
