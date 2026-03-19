@@ -1,4 +1,5 @@
-%global tag 2026030700
+%global tag 2026031800
+%global commit aba340bf68c92fa27030a325cb9b444616e45f0b
 
 Name:           hardened_malloc
 Version:        14
@@ -7,7 +8,7 @@ Summary:        Hardened allocator designed for modern systems
 
 License:        MIT
 URL:            https://github.com/GrapheneOS/hardened_malloc
-Source0:        %{url}/archive/refs/tags/%{tag}.tar.gz
+Source0:        %{url}/archive/%{commit}.tar.gz
 Source1:        opt.patch
 BuildRequires:  systemd-rpm-macros rpm-build rpmdevtools make gcc gcc-c++
 ExclusiveArch: x86_64 aarch64
