@@ -1,5 +1,5 @@
-%global tag 2026031800
-%global commit aba340bf68c92fa27030a325cb9b444616e45f0b
+%global tag 2026042100
+%global commit 6dc33bd5c6e6265b810805705246b0e7335ca2d6
 
 Name:           hardened_malloc
 Version:        14
