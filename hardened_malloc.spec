@@ -1,5 +1,5 @@
 # renovate: datasource=github-tags depName=GrapheneOS/hardened_malloc versioning=regex:^(?<major>\d{10})$
-%global tag 2026100600
+%global tag 2026101600
 %global commit c28cd930b0d059ef7704fc816e9d6f367f93fcdd
 
 Name:           hardened_malloc
